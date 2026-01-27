@@ -1,42 +1,162 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* App Container */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: #1a1a1a;
+}
+
+/* Top Floating Toolbar */
+.floating-toolbar {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #202021 0%, #4d3b5e 100%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 1rem 2rem;
+}
+
+.toolbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.5rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #555a78;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3e3c8a;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Main Content - Side by Side Layout */
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Left Panel - Code Editor */
+.left-panel {
+  width: 450px;
+  flex: 0 0 450px;
+  display: flex;
+  flex-direction: column;
+  background-color: #252526;
+  border-right: 1px solid #1e1e1e;
+  overflow: hidden;
+}
+
+/* Code Editor */
+.editor {
+  flex: 1;
+  overflow: hidden;
+  background-color: #1e1e1e;
+}
+
+.editor .CodeMirror {
+  height: 100%;
+  font-size: 14px;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+}
+
+/* Samples Section */
+.samples-section {
+  flex-shrink: 0;
+  background-color: #2d2d2d;
+  border-top: 1px solid #1e1e1e;
+  padding: 1rem;
+}
+
+.samples-header {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cccccc;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.samples-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.sample-btn {
+  padding: 0.6rem;
+  background-color: #3c3c3c;
+  color: #cccccc;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  cursor: pointer;
   text-align: center;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.sample-btn:hover {
+  background-color: #505050;
+  border-color: #667eea;
+  color: #fff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Right Panel - Diagram Canvas */
+.right-panel {
+  flex: 1;
+  min-width: 0;
+  background-color: #ffffff;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.diagram {
+  max-width: 100%;
+  display: inline-block;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.diagram svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
