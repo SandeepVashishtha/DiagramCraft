@@ -81,16 +81,46 @@ ${err.message}
   };
 
   return (
-    <div className="container">
-      <div className="editor" ref={editorRef}></div>
-
-      <div className="preview">
-        <div className="toolbar">
-          <button onClick={handleRenderClick}>Render</button>
-          <button onClick={downloadSVG}>Download SVG</button>
-          <button onClick={downloadPNG}>Download PNG</button>
+    <div className="app-container">
+      {/* Top Floating Toolbar */}
+      <div className="floating-toolbar">
+        <div className="toolbar-content">
+          <h1 className="app-title">DiagramCraft</h1>
+          <div className="toolbar-actions">
+            <button className="btn-primary" onClick={handleRenderClick}>
+              Render
+            </button>
+            <button className="btn-secondary" onClick={downloadSVG}>
+              Download SVG
+            </button>
+            <button className="btn-secondary" onClick={downloadPNG}>
+              Download PNG
+            </button>
+          </div>
         </div>
-        <div className="diagram" ref={diagramRef}></div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="main-content">
+        {/* Left Panel - Editor */}
+        <div className="left-panel">
+          <div className="editor" ref={editorRef}></div>
+          
+          <div className="samples-section">
+            <div className="samples-header">Sample Diagrams</div>
+            <div className="samples-grid">
+              <button className="sample-btn">Flowchart</button>
+              <button className="sample-btn">Sequence</button>
+              <button className="sample-btn">Class</button>
+              <button className="sample-btn">State</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Panel - Diagram Canvas */}
+        <div className="right-panel">
+          <div className="diagram" ref={diagramRef}></div>
+        </div>
       </div>
     </div>
   );
