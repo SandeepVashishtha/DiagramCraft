@@ -1,4 +1,13 @@
+import { useState } from "react";
+
 export default function Footer({ onUndo, onRedo, onExport, canUndo = false, canRedo = false }) {
+  const [showExportMenu, setShowExportMenu] = useState(false);
+
+  const handleExportClick = (format) => {
+    onExport(format);
+    setShowExportMenu(false);
+  };
+
   return (
     <footer className="h-20 bg-slate-100 dark:bg-background-dark border-t border-slate-200 dark:border-white/5 flex items-center px-6 gap-8 z-40">
       {/* Temporal History Label */}
@@ -59,13 +68,42 @@ export default function Footer({ onUndo, onRedo, onExport, canUndo = false, canR
         
         <div className="w-px h-6 bg-slate-300 dark:bg-white/10 mx-2"></div>
         
-        <button
-          className="flex items-center gap-2 px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:opacity-90 transition-opacity"
-          onClick={onExport}
-        >
-          <span className="material-symbols-outlined text-sm">download</span>
-          Export
-        </button>
+        <div className="relative">
+          <button
+            className="flex items-center gap-2 px-4 py-1.5 bg-primary text-white text-xs font-bold rounded-lg hover:opacity-90 transition-opacity"
+            onClick={() => setShowExportMenu(!showExportMenu)}
+          >
+            <span className="material-symbols-outlined text-sm">download</span>
+            Export
+            <span className="material-symbols-outlined text-sm">expand_more</span>
+          </button>
+
+          {showExportMenu && (
+            <>
+              <div
+                className="fixed inset-0 z-40"
+                onClick={() => setShowExportMenu(false)}
+              />
+              <div className="absolute bottom-full right-0 mb-2 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 overflow-hidden z-50">
+                <button
+                  className="w-full px-4 py-2.5 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-2 transition-colors"
+                  onClick={() => handleExportClick('svg')}
+                >
+                  <span className="material-symbols-outlined text-base">image</span>
+                  Export as SVG
+                </button>
+                <div className="h-px bg-slate-200 dark:bg-slate-700" />
+                <button
+                  className="w-full px-4 py-2.5 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-2 transition-colors"
+                  onClick={() => handleExportClick('png')}
+                >
+                  <span className="material-symbols-outlined text-base">photo</span>
+                  Export as PNG
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </footer>
   );
