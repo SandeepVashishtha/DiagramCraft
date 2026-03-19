@@ -170,7 +170,7 @@ export default function App() {
       edgeLabels.forEach((label) => {
         const text = label.textContent?.trim().toLowerCase();
         if (text === 'yes') {
-          label.style.transform = 'translateX(-24px)';
+          label.style.transform = 'translateX(-25px)';
         } else if (text === 'no') {
           label.style.transform = 'translateX(-1px)';
         }
